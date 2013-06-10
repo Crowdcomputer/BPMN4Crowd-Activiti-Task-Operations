@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.crowdcomputer</groupId>
-	<artifactId>CrowdTaskOperations</artifactId>
+	<artifactId>TaskOperations</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Implementation of the Tasks</name>
 	<dependencies>
@@ -53,6 +53,34 @@
 					<optimize>true</optimize>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<executions>
+					<execution>
+						<id>copy-jar-to-tomcat</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<outputDirectory>${tomcat}/webapps/activiti-rest/WEB-INF/lib/</outputDirectory>
+					<resources>
+						<resource>
+							<directory>${project.build.directory}</directory>
+							<includes>
+								<include>*.jar</include>
+							</includes>
+						</resource>
+					</resources>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
+	<properties>
+		<tomcat>/Users/stefanotranquillini/sw/activiti/tomcat</tomcat>
+	</properties>
 </project>

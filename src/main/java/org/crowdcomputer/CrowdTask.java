@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,7 +15,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.crowdcomputer.utils.staticvalues.Status;
 import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
 
 public class CrowdTask implements JavaDelegate {
 
@@ -61,7 +58,6 @@ public class CrowdTask implements JavaDelegate {
 
 	public void execute(DelegateExecution execution) throws Exception {
 
-		System.out.println("CROWDCOMPUTER STUFF");
 		String app_token = ""+execution.getVariable("app_token");
 		String user_token = ""+execution.getVariable("user_token");
 		log.debug(app_token+" "+user_token);
@@ -92,7 +88,6 @@ public class CrowdTask implements JavaDelegate {
 		log.debug("data "+data);
 		JSONObject ret_startTask = croco.startTask(task_id,data );
 		log.debug("start task "+ ret_startTask);
-		int i =0;
 		while (!hasFinished(croco.getStatus(task_id))){
 			log.debug("nothing has done for " + task_id);
 			Thread.sleep(30000);
