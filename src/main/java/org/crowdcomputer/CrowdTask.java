@@ -48,7 +48,6 @@ public class CrowdTask implements JavaDelegate {
 	
 	public boolean hasFinished(JSONObject ret){
 		String status = ""+ret.get("status");
-		log.debug("status " + status);
 		if (status.equals(Status.FINISHED))
 			return true;
 		else
@@ -57,7 +56,8 @@ public class CrowdTask implements JavaDelegate {
 	}
 
 	public void execute(DelegateExecution execution) throws Exception {
-
+		log.warn("execute of the task");
+		
 		String app_token = ""+execution.getVariable("app_token");
 		String user_token = ""+execution.getVariable("user_token");
 		log.debug(app_token+" "+user_token);
@@ -81,23 +81,21 @@ public class CrowdTask implements JavaDelegate {
 		String reward_p = platform.getExpressionText();
 		log.debug("platfrom " + reward_p);
 		JSONObject ret_ctask = croco.createCCTask(process, title, desc,  deadline_date, n_o_i, url, rew, reward_p);
-		log.debug("Create Task " + ret_ctask);
 		Long task_id = Long.valueOf(""+ret_ctask.get("id")).longValue();
 		Object d = execution.getVariable("data");
 		String data = (d==null) ? "[]" : (""+d) ;
 		log.debug("data "+data);
-		JSONObject ret_startTask = croco.startTask(task_id,data );
-		log.debug("start task "+ ret_startTask);
-		while (!hasFinished(croco.getStatus(task_id))){
-			log.debug("nothing has done for " + task_id);
-			Thread.sleep(30000);
-		}
-		log.debug("and it's done "+task_id);
-		JSONObject results = croco.getResult(task_id);
-		log.debug("result variable: "+results.get("results"));
-		execution.setVariable("data", results.get("results"));
-		log.debug("Data variable: "+execution.getVariable("data"));
-		
+		JSONObject ret_startTask = croco.startTask(task_id,data,""+execution.getCurrentActivityId());
+//		while (!hasFinished(croco.getStatus(task_id))){
+//			log.debug("nothing has done for " + task_id);
+//			Thread.sleep(30000);
+//		}
+//		log.debug("and it's done "+task_id);
+//		JSONObject results = croco.getResult(task_id);
+//		log.debug("result variable: "+results.get("results"));
+//		execution.setVariable("data", results.get("results"));
+//		log.debug("Data variable: "+execution.getVariable("data"));
+//		
 
 	}
 }
