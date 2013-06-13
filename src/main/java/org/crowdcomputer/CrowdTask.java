@@ -80,7 +80,7 @@ public class CrowdTask implements JavaDelegate {
 		log.debug("reward " + rew);
 		String reward_p = platform.getExpressionText();
 		log.debug("platfrom " + reward_p);
-		JSONObject ret_ctask = croco.createCCTask(process, title, desc,  deadline_date, n_o_i, url, rew, reward_p);
+		JSONObject ret_ctask = croco.createAMTTask(process, title, desc,  deadline_date, n_o_i, url, rew);
 		Long task_id = Long.valueOf(""+ret_ctask.get("id")).longValue();
 		Object d = execution.getVariable("data");
 		String data = (d==null) ? "[]" : (""+d) ;
