@@ -1,4 +1,4 @@
-package org.crowdcomputer;
+package org.crowdcomputer.impl;
 
 import javax.ws.rs.core.UriBuilder;
 
@@ -10,7 +10,7 @@ import org.apache.logging.log4j.Logger;
 import org.crowdcomputer.utils.RestCaller;
 import org.json.simple.JSONObject;
 
-public class LoadDataTask implements JavaDelegate {
+public class LoadData implements JavaDelegate {
 
 
 	private Expression url;

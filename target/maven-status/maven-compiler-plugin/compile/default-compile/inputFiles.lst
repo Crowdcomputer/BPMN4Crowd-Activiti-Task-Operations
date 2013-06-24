@@ -1,4 +1,10 @@
-/Users/stefanotranquillini/sw/Java/CrowdTaskOperations/src/main/java/org/crowdcomputer/LoadDataTask.java
-/Users/stefanotranquillini/sw/Java/CrowdTaskOperations/src/main/java/org/crowdcomputer/MergeDataTask.java
-/Users/stefanotranquillini/sw/Java/CrowdTaskOperations/src/main/java/org/crowdcomputer/CrowdTask.java
-/Users/stefanotranquillini/sw/Java/CrowdTaskOperations/src/main/java/org/crowdcomputer/SplitDataTask.java
+/Users/stefanotranquillini/sw/Java/CrowdTaskOperations/src/main/java/org/crowdcomputer/impl/SplitData.java
+/Users/stefanotranquillini/sw/Java/CrowdTaskOperations/src/main/java/org/crowdcomputer/impl/TurkTask.java
+/Users/stefanotranquillini/sw/Java/CrowdTaskOperations/src/main/java/org/crowdcomputer/impl/JoinObject.java
+/Users/stefanotranquillini/sw/Java/CrowdTaskOperations/src/main/java/org/crowdcomputer/impl/LoadData.java
+/Users/stefanotranquillini/sw/Java/CrowdTaskOperations/src/main/java/org/crowdcomputer/impl/CrowdTask.java
+/Users/stefanotranquillini/sw/Java/CrowdTaskOperations/src/main/java/org/crowdcomputer/impl/SplitObject.java
+/Users/stefanotranquillini/sw/Java/CrowdTaskOperations/src/main/java/org/crowdcomputer/impl/MergeData.java
+/Users/stefanotranquillini/sw/Java/CrowdTaskOperations/src/main/java/org/crowdcomputer/impl/utils/BaseTask.java
+/Users/stefanotranquillini/sw/Java/CrowdTaskOperations/src/main/java/org/crowdcomputer/impl/FilterData.java
+/Users/stefanotranquillini/sw/Java/CrowdTaskOperations/src/main/java/org/crowdcomputer/impl/TestActiviti.java
