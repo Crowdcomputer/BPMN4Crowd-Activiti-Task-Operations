@@ -1,4 +1,4 @@
-package org.crowdcomputer.impl;
+package org.crowdcomputer.impl.task;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -17,14 +17,17 @@ import org.crowdcomputer.impl.utils.BaseTask;
 import org.crowdcomputer.utils.staticvalues.Status;
 import org.json.simple.JSONObject;
 
-public class CrowdTask extends BaseTask {
+public class ContestTask extends BaseTask {
 
 	private Expression deadline;
 	private Expression description;
-	private Expression number_of_instances;
 	private Expression page_url;
 	private Expression reward;
 	private Expression platform;
+	private Expression reward_tactic;
+	private Expression merge;
+	private Expression validation_process;
+	private Expression reward_strategy;
 	private Logger log = LogManager.getLogger(this.getClass());
 
 	private Date convertPeriod(String s) {
@@ -70,20 +73,26 @@ public class CrowdTask extends BaseTask {
 		log.debug("desc  " + desc);
 		Date deadline_date = convertPeriod(deadline.getExpressionText());
 		log.debug("deadline " + deadline_date);
-		Integer n_o_i = Integer.parseInt(number_of_instances
-				.getExpressionText());
-		log.debug("noi " + n_o_i);
 		String url = page_url.getExpressionText();
 		log.debug("url " + url);
 		Double rew = Double.parseDouble(reward.getExpressionText());
 		log.debug("reward " + rew);
 		String reward_p = platform.getExpressionText();
 		log.debug("platfrom " + reward_p);
-//		
-		HashMap parameters = new HashMap();
-		parameters.put("data_name",output.getExpressionText());
+		String s_reward_strategy = reward_strategy.getExpressionText();
+
+		String s_validation_process = "VALID";
+		if (validation_process != null)
+			s_validation_process = validation_process.getExpressionText();
+		//
+		HashMap parameters = getBaseParameters(execution);
+		parameters.put("data_name", output.getExpressionText());
+		parameters.put("type", "contest");
+		parameters
+				.put("merge", Boolean.parseBoolean(merge.getExpressionText()));
 		JSONObject ret_ctask = croco.createCCTask(process, title, desc,
-				deadline_date, n_o_i, url, rew, reward_p,parameters);
+				deadline_date, 0, url, rew, reward_p, s_reward_strategy,
+				s_validation_process, parameters);
 		log.debug("task cration: " + ret_ctask);
 		Long task_id = Long.valueOf("" + ret_ctask.get("id")).longValue();
 		String data = getData(execution);

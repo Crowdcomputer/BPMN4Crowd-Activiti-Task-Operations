@@ -9,7 +9,7 @@
 		<dependency>
 			<groupId>org.activiti</groupId>
 			<artifactId>activiti-engine</artifactId>
-			<version>5.12</version> <!-- Current Activiti Engine Version -->
+			<version>5.13</version> <!-- Current Activiti Engine Version -->
 			<scope>compile</scope>
 		</dependency>
 		<dependency>

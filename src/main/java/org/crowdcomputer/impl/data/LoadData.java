@@ -1,4 +1,4 @@
-package org.crowdcomputer.impl;
+package org.crowdcomputer.impl.data;
 
 import javax.ws.rs.core.UriBuilder;
 

@@ -1,16 +1,19 @@
 package org.crowdcomputer.impl.utils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.activiti.engine.delegate.DelegateExecution;
 import org.activiti.engine.delegate.Expression;
 import org.activiti.engine.delegate.JavaDelegate;
+import org.activiti.engine.runtime.Execution;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.crowdcomputer.CroCoClient;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 
 public class BaseTask implements JavaDelegate {
 	
@@ -22,10 +25,10 @@ public class BaseTask implements JavaDelegate {
 
 	
 	protected void init(DelegateExecution execution){
-		String app_token = "" + execution.getVariable("app_token");
+		String app_token = "" + execution.getVariable("app_token") ;
 		String user_token = "" + execution.getVariable("user_token");
 		croco = new CroCoClient(app_token, user_token);
-		log.debug("Croco created");
+		log.debug("Croco created " + app_token + " - " + user_token);
 	}
 	protected String getData(DelegateExecution execution) {
 		String name = input.getExpressionText();
@@ -42,25 +45,39 @@ public class BaseTask implements JavaDelegate {
 	protected String getDatas(DelegateExecution execution) {
 		String name = input.getExpressionText();
 		String[] datas = name.split(",");
-		List<String> ret = new ArrayList<String>();
+		JSONArray ret = new JSONArray();
 		for(String data: datas){
 			Object d = execution.getVariable(data);
 			String data_t = (d == null) ? "[]" : ("" + d);
-			ret.add(data_t);
+			JSONArray data_j = (JSONArray) JSONValue.parse(data_t);
+			for(int i=0;i<data_j.size();i++){
+				ret.add(data_j.get(i));
+			}
 		}
-		JSONArray arr= new JSONArray();
-		arr.addAll(ret);
-		log.debug("getDatas " +  arr.toJSONString());
+		log.debug("getDatas " +  ret.toJSONString());
 
-		return arr.toJSONString();
+		return ret.toJSONString();
 	}
 
+	protected HashMap getBaseParameters(DelegateExecution execution){
+		HashMap pars = new HashMap();
+//		String validation = "" + execution.getVariable("validation");
+//		if (validation.length()>0){
+//			pars.put("validation", validation);
+//		}
+//		String task_instance = "" + execution.getVariable("task_instance");
+//		if (task_instance.length()>0){
+//			pars.put("task_instance", task_instance);
+//		}
+		return pars;
+
+	}
 
 	protected void setResult(DelegateExecution execution, JSONObject data) {
 		String name = output.getExpressionText();
 		if ((name == null) || (name.length() == 0))
 			name = "data";
-		log.debug("setResult  " +  data.get("result"));
+		log.debug("setResult  " + name + " "+  data.get("result"));
 
 		execution.setVariable(name, data.get("result"));
 	}
@@ -70,7 +87,6 @@ public class BaseTask implements JavaDelegate {
 		JSONArray datas = (JSONArray) data.get("result");
 		for(int i=0; i<2; i++){
 			log.debug("setResults  " + i + " " + datas.get(i));
-
 			execution.setVariable(data_names[i], datas.get(i));
 		}
 	}

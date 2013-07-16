@@ -1,2 +1,3 @@
 *.class
 /target/classes/org/crowdcomputer/CrowdTask.class
+/target
