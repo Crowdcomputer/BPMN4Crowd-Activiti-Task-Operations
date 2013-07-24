@@ -24,7 +24,6 @@ public class ContestTask extends BaseTask {
 	private Expression page_url;
 	private Expression reward;
 	private Expression platform;
-	private Expression reward_tactic;
 	private Expression merge;
 	private Expression validation_process;
 	private Expression reward_strategy;
@@ -62,7 +61,6 @@ public class ContestTask extends BaseTask {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void execute(DelegateExecution execution) throws Exception {
 		init(execution);
-		log.warn("execute of the task");
 		String process_s = "" + execution.getVariable("processId");
 		log.debug(process_s);
 		Long process = Long.valueOf(process_s).longValue();
@@ -96,6 +94,7 @@ public class ContestTask extends BaseTask {
 		log.debug("task cration: " + ret_ctask);
 		Long task_id = Long.valueOf("" + ret_ctask.get("id")).longValue();
 		String data = getData(execution);
+		log.debug("data {}",data);
 		JSONObject ret_startTask = croco.startTask(task_id, data, ""
 				+ execution.getCurrentActivityId());
 		log.debug("start Task " + ret_startTask);

@@ -62,7 +62,6 @@ public class NewsletterTask extends BaseTask {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void execute(DelegateExecution execution) throws Exception {
 		init(execution);
-		log.warn("execute of the task");
 		String process_s = "" + execution.getVariable("processId");
 		log.debug(process_s);
 		Long process = Long.valueOf(process_s).longValue();

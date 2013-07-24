@@ -10,8 +10,6 @@ import java.util.regex.Pattern;
 
 import org.activiti.engine.delegate.DelegateExecution;
 import org.activiti.engine.delegate.Expression;
-import org.activiti.engine.delegate.JavaDelegate;
-import org.apache.commons.lang.NotImplementedException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.crowdcomputer.impl.utils.BaseTask;
@@ -64,7 +62,6 @@ public class TurkTask extends BaseTask {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void execute(DelegateExecution execution) throws Exception {
 		init(execution);
-		log.warn("execute of the task");
 		String process_s = "" + execution.getVariable("processId");
 		log.debug(process_s);
 		Long process = Long.valueOf(process_s).longValue();
@@ -83,8 +80,10 @@ public class TurkTask extends BaseTask {
 		Double rew = Double.parseDouble(reward.getExpressionText());
 		log.debug("reward " + rew);
 		String s_reward_strategy = reward_strategy.getExpressionText();
-		String s_validation_process = validation_process.getExpressionText();
-//		
+		String s_validation_process = "VALID";
+		if (validation_process != null)
+			s_validation_process = validation_process.getExpressionText();
+		
 		HashMap parameters = getBaseParameters(execution);
 		parameters.put("data_name",output.getExpressionText());
 		parameters.put("type","marketplace");

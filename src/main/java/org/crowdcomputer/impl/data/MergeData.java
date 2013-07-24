@@ -10,7 +10,8 @@ import org.json.simple.JSONObject;
 public class MergeData extends BaseTask {
 
 	
-	private Expression field;
+//	@SuppressWarnings("unused")
+//	private Expression field;
 	private Logger log = LogManager.getLogger(this.getClass());
 
 	

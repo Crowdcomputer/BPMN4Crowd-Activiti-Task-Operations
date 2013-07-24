@@ -1,13 +1,6 @@
 package org.crowdcomputer.impl.task;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.ws.rs.core.UriBuilder;
 
@@ -17,8 +10,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.crowdcomputer.impl.utils.BaseTask;
 import org.crowdcomputer.utils.RestCaller;
-import org.crowdcomputer.utils.staticvalues.Endpoints;
-import org.crowdcomputer.utils.staticvalues.Status;
 import org.json.simple.JSONObject;
 
 public class MachineTask extends BaseTask {

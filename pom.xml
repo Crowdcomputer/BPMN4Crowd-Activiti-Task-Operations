@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.crowdcomputer</groupId>
 	<artifactId>Croco-Task-Operations</artifactId>
-	<version>0.0.1</version>
+	<version>0.1.0</version>
 	<name>Implementation of the Tasks</name>
 	<dependencies>
 		<dependency>
@@ -30,7 +30,7 @@
 		<dependency>
 			<groupId>org.crowdcomputer.sdk</groupId>
 			<artifactId>cc-sdk-java</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.1.0</version>
 		</dependency>
 	</dependencies>
 	<repositories>
