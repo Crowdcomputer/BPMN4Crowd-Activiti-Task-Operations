@@ -1,3 +1,5 @@
 *.class
 /target/classes/org/crowdcomputer/CrowdTask.class
 /target
+
+/src/.DS_Store
