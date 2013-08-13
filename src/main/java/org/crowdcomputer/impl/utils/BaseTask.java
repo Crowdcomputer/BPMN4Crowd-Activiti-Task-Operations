@@ -93,7 +93,8 @@ public class BaseTask implements JavaDelegate {
 			name = "data";
 		log.debug("setResult  " + name + " "+  data.get("result"));
 		log.debug("{} vs {} vs {}",((JSONArray)data.get("result")),((JSONArray)data.get("result")).toJSONString(),data.get("result"));
-		execution.setVariable(name, ((JSONArray)data.get("result")));
+		String res = ""+data.get("result");
+		execution.setVariable(name,((JSONArray) JSONValue.parse(res)));
 	}
 
 	protected void setResults(DelegateExecution execution, JSONObject data) {
