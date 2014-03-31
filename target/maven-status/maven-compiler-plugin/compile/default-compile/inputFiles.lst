@@ -7,9 +7,10 @@
 /Users/stefanotranquillini/sw/Java/CrowdTaskOperations/src/main/java/org/crowdcomputer/impl/utils/StringToJson.java
 /Users/stefanotranquillini/sw/Java/CrowdTaskOperations/src/main/java/org/crowdcomputer/impl/task/TurkTask.java
 /Users/stefanotranquillini/sw/Java/CrowdTaskOperations/src/main/java/org/crowdcomputer/impl/utils/BaseTask.java
+/Users/stefanotranquillini/sw/Java/CrowdTaskOperations/src/main/java/org/crowdcomputer/impl/task/BidTask.java
 /Users/stefanotranquillini/sw/Java/CrowdTaskOperations/src/main/java/org/crowdcomputer/impl/task/ContestTask.java
-/Users/stefanotranquillini/sw/Java/CrowdTaskOperations/src/main/java/org/crowdcomputer/impl/TestActiviti.java
 /Users/stefanotranquillini/sw/Java/CrowdTaskOperations/src/main/java/org/crowdcomputer/impl/internal/ValidationTask.java
-/Users/stefanotranquillini/sw/Java/CrowdTaskOperations/src/main/java/org/crowdcomputer/impl/data/FilterData.java
-/Users/stefanotranquillini/sw/Java/CrowdTaskOperations/src/main/java/org/crowdcomputer/impl/data/JoinObject.java
 /Users/stefanotranquillini/sw/Java/CrowdTaskOperations/src/main/java/org/crowdcomputer/impl/data/LoadData.java
+/Users/stefanotranquillini/sw/Java/CrowdTaskOperations/src/main/java/org/crowdcomputer/impl/data/JoinObject.java
+/Users/stefanotranquillini/sw/Java/CrowdTaskOperations/src/main/java/org/crowdcomputer/impl/data/FilterData.java
+/Users/stefanotranquillini/sw/Java/CrowdTaskOperations/src/main/java/org/crowdcomputer/impl/TestActiviti.java

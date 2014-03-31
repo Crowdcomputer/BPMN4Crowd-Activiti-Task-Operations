@@ -1,14 +1,5 @@
 package org.crowdcomputer.impl.task;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import org.activiti.engine.delegate.DelegateExecution;
 import org.activiti.engine.delegate.Expression;
 import org.apache.logging.log4j.LogManager;
@@ -17,7 +8,11 @@ import org.crowdcomputer.impl.utils.BaseTask;
 import org.crowdcomputer.utils.staticvalues.Status;
 import org.json.simple.JSONObject;
 
-public class MarketPlaceTask extends BaseTask {
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class BidTask extends BaseTask {
 
 	private Expression deadline;
 	private Expression description;
@@ -90,10 +85,9 @@ public class MarketPlaceTask extends BaseTask {
 		//
 		HashMap parameters = getBaseParameters(execution);
 		parameters.put("data_name", output.getExpressionText());
-		parameters.put("type", "marketplace");
+		parameters.put("type", "bid");
 		parameters
 				.put("merge", Boolean.parseBoolean(merge.getExpressionText()));
-		
 		JSONObject ret_ctask = croco.createCCTask(process, title, desc,
 				deadline_date, n_o_i, url, rew, reward_p, s_reward_strategy,
 				s_validation_process, parameters);
