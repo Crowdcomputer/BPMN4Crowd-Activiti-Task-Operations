@@ -1,15 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.crowdcomputer</groupId>
 	<artifactId>Croco-Task-Operations</artifactId>
-	<version>0.1.0</version>
+	<version>0.2.0</version>
 	<name>Implementation of the Tasks</name>
 	<dependencies>
 		<dependency>
 			<groupId>org.activiti</groupId>
 			<artifactId>activiti-engine</artifactId>
-			<version>5.13</version> <!-- Current Activiti Engine Version -->
+			<version>5.16.3</version> <!-- Current Activiti Engine Version -->
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
@@ -30,7 +29,7 @@
 		<dependency>
 			<groupId>org.crowdcomputer.sdk</groupId>
 			<artifactId>cc-sdk-java</artifactId>
-			<version>0.1.0</version>
+			<version>0.2.0</version>
 		</dependency>
 	</dependencies>
 	<repositories>
@@ -81,6 +80,6 @@
 		</plugins>
 	</build>
 	<properties>
-		<tomcat>/Users/stefanotranquillini/sw/activiti/tomcat</tomcat>
+		<tomcat>/Users/stefano/Documents/SW/tomcat</tomcat>
 	</properties>
 </project>

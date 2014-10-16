@@ -12,10 +12,12 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
-public class BaseTask implements JavaDelegate {
+public class BaseTask implements JavaDelegate  {
 	
 	protected Expression input;
 	protected Expression output;
+    protected Expression input_execution;
+    protected Expression output_execution;
 	protected CroCoClient croco = null;
 	
 	protected Logger log = LogManager.getLogger(this.getClass());
@@ -38,7 +40,7 @@ public class BaseTask implements JavaDelegate {
 //		}
 	}
 	protected String getData(DelegateExecution execution) {
-	
+
 		String name = input.getExpressionText();
 		if ((name == null) || (name.length() == 0))
 			name = "data";
@@ -106,7 +108,35 @@ public class BaseTask implements JavaDelegate {
 		}
 	}
 
-	@Override
+    protected JSONObject getExecutionVariables(DelegateExecution execution){
+        //read execution variables
+        String name = input_execution.getExpressionText();
+        if ((name == null) || (name.length() == 0))
+            name = "data";
+        Object d = execution.getVariable(name);
+        String data = (d == null) ? "{}" : ("" + d);
+        return (JSONObject)JSONValue.parse(data);
+    }
+
+    protected JSONObject setVarToExecutionVariables(DelegateExecution execution,String v_name, String v_value){
+        //add the value to execution variables
+        String name = output_execution.getExpressionText();
+        if ((name == null) || (name.length() == 0))
+            name = "data";
+        Object d = execution.getVariable(name);
+        String data = (d == null) ? "{}" : ("" + d);
+        JSONObject j_output= (JSONObject)JSONValue.parse(data);
+        j_output.put(v_name,v_value);
+        execution.setVariable(name,j_output.toJSONString());
+        return j_output;
+    }
+
+    protected long getTaskInstanceId(DelegateExecution execution){
+        JSONObject execution_data = getExecutionVariables(execution);
+        return Long.valueOf(""+execution_data.get("task_instance_id")).longValue();
+    }
+
+    @Override
 	public void execute(DelegateExecution execution) throws Exception {
 		log.error("someone just called me");
 		throw new Exception("You must extend this class, not use it");

@@ -9,7 +9,7 @@
   <logger name="org.crowdcomputer" level="DEBUG"  additivity="false">
   	<appender-ref ref="Console"/>
   </logger>
-   <root level="WARN">
+   <root level="DEBUG">
       <appender-ref ref="Console"/>
    </root>
   </loggers>
