@@ -15,7 +15,8 @@ public class RewardGive extends BaseTask {
     @SuppressWarnings({"unchecked", "rawtypes"})
     public void execute(DelegateExecution execution) throws Exception {
         init(execution);
-        long task_id = Integer.parseInt("" + execution.getVariable("taskId"));
+        log.debug("taskId {} ",execution.getVariable("taskId"));
+        long task_id = Long.valueOf("" + execution.getVariable("taskId")).longValue();
         long task_instance_id = getTaskInstanceId(execution);
         JSONObject ret = croco.giveReward(task_id,task_instance_id);
         log.debug("Give reward "+ret);

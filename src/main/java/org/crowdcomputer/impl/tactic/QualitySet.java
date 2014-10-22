@@ -16,9 +16,12 @@ public class QualitySet extends BaseTask {
     @SuppressWarnings({"unchecked", "rawtypes"})
     public void execute(DelegateExecution execution) throws Exception {
         init(execution);
-        long task_id = Integer.parseInt("" + execution.getVariable("taskId"));
+        long task_id = Long.valueOf(""+execution.getVariable("taskId")).longValue();
         long task_instance_id = getTaskInstanceId(execution);
-        JSONObject ret = croco.setQuality(task_id,task_instance_id,Integer.parseInt(quality.getExpressionText()));
+        String s_quality = quality.getExpressionText();
+        log.debug("quality is {} ",s_quality);
+        int i_quality = Integer.parseInt(s_quality);
+        JSONObject ret = croco.setQuality(task_id,task_instance_id,i_quality);
         log.debug("set quality " + ret.toJSONString());
     }
 }

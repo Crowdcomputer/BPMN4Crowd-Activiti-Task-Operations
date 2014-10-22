@@ -15,7 +15,7 @@ public class RewardReject extends BaseTask {
     @SuppressWarnings({"unchecked", "rawtypes"})
     public void execute(DelegateExecution execution) throws Exception {
         init(execution);
-        long task_id = Integer.parseInt("" + execution.getVariable("taskId"));
+        long task_id = Long.valueOf("" + execution.getVariable("taskId")).longValue();
         long task_instance_id = getTaskInstanceId(execution);
         JSONObject ret = croco.rejectReward(task_id, task_instance_id);
         log.debug("Reject reward "+ret);

@@ -81,6 +81,8 @@ public class CreateTask extends BaseTask {
 		parameters.put("data_name", output.getExpressionText());
 		parameters.put("type", "custom");
         parameters.put("process_tactic",s_tactic_process);
+//        this is for pick and send result
+        parameters.put("receivers",execution.getCurrentActivityId());
 
 
 		

@@ -132,8 +132,18 @@ public class BaseTask implements JavaDelegate  {
     }
 
     protected long getTaskInstanceId(DelegateExecution execution){
-        JSONObject execution_data = getExecutionVariables(execution);
-        return Long.valueOf(""+execution_data.get("task_instance_id")).longValue();
+        String instanceId=""+execution.getVariable("taskInstanceId");
+        log.debug("instance id first {} ", instanceId);
+
+//        if is not passed in any of the task before (which should be the case), it's taken form the execution.
+//        start process should send task_id and task_instance_id
+        if (instanceId == null){
+            JSONObject execution_data = getExecutionVariables(execution);
+            instanceId = ""+execution_data.get("taskInstanceId");
+        }
+        log.debug("instance id after {} ", instanceId);
+
+        return Long.valueOf(instanceId).longValue();
     }
 
     @Override
